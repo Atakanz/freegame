@@ -3,7 +3,6 @@ import { View, SafeAreaView, FlatList } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useFonts } from "expo-font";
 import Title from "./src/components/title/title";
-import AppLoading from "expo-app-loading";
 import { fetchData } from "./utils/http";
 import GameCard from "./src/components/gameCard/gameCard";
 import Filter from "./src/components/filter/filter";
@@ -20,7 +19,7 @@ const App = () => {
     "app-logo": require("./assets/fonts/ZilapGamePunkDemoMod1-JRZVE.ttf"),
     "sans-serif": require("./assets/fonts/Swansea-q3pd.ttf"),
   });
-  console.log("app", filterOptions);
+
   useEffect(() => {
     async function getGames() {
       const data = await fetchData(filterOptions);
@@ -30,7 +29,7 @@ const App = () => {
   }, [filterOptions]);
 
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return null;
   }
   return (
     <SafeAreaView style={{ flex: 1 }}>
