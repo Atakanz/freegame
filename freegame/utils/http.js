@@ -1,18 +1,21 @@
 const API_URL = "https://www.freetogame.com/api/games";
 let requestCount = 0;
 
-export async function fetchData({ category, subtitle }) {
+export async function fetchData(filterOptions) {
   if (requestCount >= 4) {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     requestCount = 0;
   }
-  console.log(subtitle.toLowerCase());
   try {
     let response;
 
-    if (category && subtitle) {
+    if (filterOptions.category && typeof filterOptions === "object") {
       response = await fetch(
-        `${API_URL}?${category.toLowerCase()}=${subtitle.toLowerCase()}`
+        `${API_URL}?${filterOptions.category.toLowerCase()}=${filterOptions.subTitle.toLowerCase()}`
+      );
+    } else if (filterOptions.length === 3) {
+      response = await fetch(
+        `${API_URL}?${filterOptions[0].category.toLowerCase()}=${filterOptions[0].subTitle.toLowerCase()}&${filterOptions[1].category.toLowerCase()}=${filterOptions[1].subTitle.toLowerCase()}&${filterOptions[2].category.toLowerCase()}=${filterOptions[2].subTitle.toLowerCase()}`
       );
     } else {
       response = await fetch(API_URL);

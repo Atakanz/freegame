@@ -36,6 +36,8 @@ export default StyleSheet.create({
     backgroundColor: "rgba(255,255,255,0.9)",
     paddingHorizontal: 8,
     paddingVertical: 2,
+    marginVertical: 3,
+    marginRight: 3,
     borderRadius: 5,
     display: "flex",
     borderColor: "black",
@@ -52,5 +54,14 @@ export default StyleSheet.create({
   selectedOptionText: {
     color: "black",
     fontWeight: "bold",
+  },
+  deleteFilterView: {
+    marginLeft: "auto",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  deleteContainer: {
+    marginRight: 13,
   },
 });

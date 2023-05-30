@@ -44,11 +44,47 @@ export const selectFilterOption = (
   selected,
   subtitleIndex,
   filterData,
-  setFilterOptions
+  setFilterOptions,
+  filterOptions
 ) => {
-  setFilterOptions(filterData[selected].subTitles[subtitleIndex]);
+  const newCategory = filterData[selected].name;
+  const newSubtitle = filterData[selected].subTitles[subtitleIndex];
+
+  // Önceki filtrelenen seçeneklerin kontrolü
+  const isDuplicate = filterOptions.some(([category, subtitle]) => {
+    return category === newCategory;
+  });
+  if (filterOptions.length === 1 && isDuplicate) {
+    setFilterOptions([
+      [
+        (category = filterData[selected].name),
+        (subtitle = filterData[selected].subTitles[subtitleIndex]),
+      ],
+    ]);
+  } else if (subtitleIndex !== -1 && !isDuplicate) {
+    setFilterOptions((prevFiltered) => [
+      ...prevFiltered,
+      [
+        (category = filterData[selected].name),
+        (subtitle = filterData[selected].subTitles[subtitleIndex]),
+      ],
+    ]);
+  }
 };
 
-export const getFilteredGames = (selected, subtitle, filterData, setFilter) => {
-  setFilter({ category: filterData[selected].name, subTitle: subtitle });
+export const getFilteredGames = (
+  selected,
+  subtitle,
+  filterData,
+  setFilter,
+  filterOptions
+) => {
+  if (filterOptions.length === 1) {
+    setFilter({ category: filterData[selected].name, subTitle: subtitle });
+  } else {
+    const newFilters = filterOptions.map((option) => {
+      return { category: option[0], subTitle: option[1] };
+    });
+    setFilter(newFilters);
+  }
 };

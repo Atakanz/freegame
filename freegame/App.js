@@ -12,6 +12,7 @@ import styles from "./App.style";
 const App = () => {
   const [games, setGames] = useState([]);
   const [filterOptions, setFilterOptions] = useState({
+    filterType: "single",
     category: "",
     subTitle: "",
   });
@@ -19,13 +20,10 @@ const App = () => {
     "app-logo": require("./assets/fonts/ZilapGamePunkDemoMod1-JRZVE.ttf"),
     "sans-serif": require("./assets/fonts/Swansea-q3pd.ttf"),
   });
-
+  console.log("app", filterOptions);
   useEffect(() => {
     async function getGames() {
-      const data = await fetchData({
-        category: filterOptions.category,
-        subtitle: filterOptions.subTitle,
-      });
+      const data = await fetchData(filterOptions);
       setGames(data);
     }
     getGames();

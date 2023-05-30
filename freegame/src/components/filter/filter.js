@@ -16,7 +16,7 @@ import {
 
 const Filter = ({ setFilter }) => {
   const [selected, setSelected] = useState(0);
-  const [filterOptions, setFilterOptions] = useState("");
+  const [filterOptions, setFilterOptions] = useState([]);
   const [subtitle, setSubtitle] = useState();
   const [subtitleIndex, setSubtitleIndex] = useState(-1);
 
@@ -31,7 +31,6 @@ const Filter = ({ setFilter }) => {
   const handleRightArrow = () => {
     rightArrow(setSelected, setSubtitleIndex, setSubtitle);
   };
-
   const handleLeftArrow = () => {
     leftArrow(setSelected, setSubtitleIndex, setSubtitle);
   };
@@ -57,11 +56,21 @@ const Filter = ({ setFilter }) => {
   };
 
   const handleSelectFilterOption = () => {
-    selectFilterOption(selected, subtitleIndex, filterData, setFilterOptions);
+    selectFilterOption(
+      selected,
+      subtitleIndex,
+      filterData,
+      setFilterOptions,
+      filterOptions
+    );
   };
 
   const handleGetFilteredGames = () => {
-    getFilteredGames(selected, subtitle, filterData, setFilter);
+    getFilteredGames(selected, subtitle, filterData, setFilter, filterOptions);
+  };
+
+  const handleDeleteFilters = () => {
+    setFilterOptions([]);
   };
 
   return (
@@ -159,30 +168,57 @@ const Filter = ({ setFilter }) => {
         </Pressable>
       </View>
       <View style={styles.selectedFilterView}>
-        {filterOptions ? (
-          <View style={styles.selectedOptionView}>
-            <Text style={styles.selectedOptionText}>{filterOptions}</Text>
+        {filterOptions.length !== 0 ? (
+          <View>
+            <FlatList
+              horizontal
+              data={filterOptions}
+              keyExtractor={(item, index) => item}
+              renderItem={({ item, index }) => (
+                <View style={styles.selectedOptionView}>
+                  <Text style={styles.selectedOptionText}>{item[1]}</Text>
+                </View>
+              )}
+            />
           </View>
         ) : (
           <View style={styles.selectedOptionView}>
-            <Text style={styles.selectedOptionText}>Filter tag</Text>
+            <Text style={styles.selectedOptionText}>Filter tags (1 or 3)</Text>
           </View>
         )}
-        <Pressable
-          onPress={handleGetFilteredGames}
-          style={({ pressed }) => [
-            styles.pressableContainer,
-            { opacity: pressed ? 1 : 0.6 },
-          ]}
-        >
-          <FontAwesome
-            name="filter"
-            color="orange"
-            style={styles.directionButtons}
-            backgroundColor="rgba(255, 255, 255, 0)"
-            size={30}
-          />
-        </Pressable>
+        <View style={styles.deleteFilterView}>
+          <Pressable
+            onPress={handleGetFilteredGames}
+            style={({ pressed }) => [
+              styles.deleteContainer,
+              { opacity: pressed ? 1 : 0.7 },
+            ]}
+          >
+            <FontAwesome
+              name="filter"
+              disabled={filterOptions.length === 2 ? true : false}
+              color={filterOptions.length === 2 ? "gray" : "orange"}
+              style={styles.directionButtons}
+              backgroundColor="rgba(255, 255, 255, 0)"
+              size={30}
+            />
+          </Pressable>
+          <Pressable
+            onPress={handleDeleteFilters}
+            style={({ pressed }) => [
+              styles.pressableContainer,
+              { opacity: pressed ? 1 : 0.7 },
+            ]}
+          >
+            <FontAwesome
+              name="trash"
+              color="orange"
+              style={styles.directionButtons}
+              backgroundColor="rgba(255, 255, 255, 0)"
+              size={30}
+            />
+          </Pressable>
+        </View>
       </View>
     </View>
   );
