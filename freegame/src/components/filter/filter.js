@@ -196,8 +196,7 @@ const Filter = ({ setFilter }) => {
           >
             <FontAwesome
               name="filter"
-              disabled={filterOptions.length === 2 ? true : false}
-              color={filterOptions.length === 2 ? "gray" : "orange"}
+              color="orange"
               style={styles.directionButtons}
               backgroundColor="rgba(255, 255, 255, 0)"
               size={30}
