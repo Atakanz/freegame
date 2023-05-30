@@ -11,6 +11,10 @@ import styles from "./App.style";
 
 const App = () => {
   const [games, setGames] = useState([]);
+  const [filterOptions, setFilterOptions] = useState({
+    category: "",
+    subTitle: "",
+  });
   const [fontsLoaded] = useFonts({
     "app-logo": require("./assets/fonts/ZilapGamePunkDemoMod1-JRZVE.ttf"),
     "sans-serif": require("./assets/fonts/Swansea-q3pd.ttf"),
@@ -18,10 +22,14 @@ const App = () => {
 
   useEffect(() => {
     async function getGames() {
-      await fetchData().then((res) => setGames(res));
+      const data = await fetchData({
+        category: filterOptions.category,
+        subtitle: filterOptions.subTitle,
+      });
+      setGames(data);
     }
     getGames();
-  }, []);
+  }, [filterOptions]);
 
   if (!fontsLoaded) {
     return <AppLoading />;
@@ -40,12 +48,12 @@ const App = () => {
         style={{ flex: 1 }}
       >
         <Title />
-        <Filter />
+        <Filter setFilter={setFilterOptions} />
         <View style={styles.flatViewContainer}>
           <FlatList
             data={games}
-            keyExtractor={(item, index) => item.id}
-            renderItem={({ item, index }) => <GameCard obj={item} />}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => <GameCard obj={item} />}
           />
         </View>
       </LinearGradient>

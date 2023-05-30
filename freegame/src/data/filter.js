@@ -17,7 +17,7 @@ export const filterData = [
   },
   {
     id: 2,
-    name: "Sort by",
-    subTitles: ["Date", "Popularity", "Alphabetical", "Relevance"],
+    name: "Sort-by",
+    subTitles: ["Release-date", "Popularity", "Alphabetical", "Relevance"],
   },
 ];

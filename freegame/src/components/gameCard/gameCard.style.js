@@ -16,7 +16,7 @@ export default StyleSheet.create({
   },
   cardTitle: {
     fontFamily: "sans-serif",
-    color: "orange",
+    color: "white",
     letterSpacing: 1.5,
     marginBottom: 10,
     maxWidth: "95%",
@@ -26,6 +26,9 @@ export default StyleSheet.create({
     height: 90,
     borderRadius: 50,
     marginRight: 20,
+  },
+  textContainer: {
+    width: 230,
   },
   qualifications: {
     fontFamily: "sans-serif",
@@ -37,5 +40,14 @@ export default StyleSheet.create({
     fontSize: 12,
     color: "orange",
     fontFamily: "sans-serif",
+  },
+  timeContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    marginLeft: "auto",
+  },
+  monthText: {
+    padding: 5,
   },
 });
