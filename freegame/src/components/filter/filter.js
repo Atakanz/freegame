@@ -183,7 +183,7 @@ const Filter = ({ setFilter }) => {
           </View>
         ) : (
           <View style={styles.selectedOptionView}>
-            <Text style={styles.selectedOptionText}>Filter tags (1 or 3)</Text>
+            <Text style={styles.selectedOptionText}>Filter tags</Text>
           </View>
         )}
         <View style={styles.deleteFilterView}>

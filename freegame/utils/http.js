@@ -17,6 +17,10 @@ export async function fetchData(filterOptions) {
       response = await fetch(
         `${API_URL}?${filterOptions[0].category.toLowerCase()}=${filterOptions[0].subTitle.toLowerCase()}&${filterOptions[1].category.toLowerCase()}=${filterOptions[1].subTitle.toLowerCase()}&${filterOptions[2].category.toLowerCase()}=${filterOptions[2].subTitle.toLowerCase()}`
       );
+    } else if (filterOptions.length === 2) {
+      response = await fetch(
+        `${API_URL}?${filterOptions[0].category.toLowerCase()}=${filterOptions[0].subTitle.toLowerCase()}&${filterOptions[1].category.toLowerCase()}=${filterOptions[1].subTitle.toLowerCase()}`
+      );
     } else {
       response = await fetch(API_URL);
     }

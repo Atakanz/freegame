@@ -5,7 +5,7 @@ export default StyleSheet.create({
     fontFamily: "app-logo",
     fontSize: 68,
     textAlign: "center",
-    marginTop: 100,
+    marginTop: 70,
     marginBottom: 30,
     color: "rgba(53, 141, 230, 1)",
   },

@@ -42,7 +42,7 @@ const App = () => {
         ]}
         start={[0.3, 0.1]}
         end={[0.3, 0.3]}
-        locations={[0.39, 0.17, 0.46]}
+        locations={[0.24, 0.17, 0.3]}
         style={{ flex: 1 }}
       >
         <Title />
