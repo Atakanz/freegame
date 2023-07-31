@@ -3,11 +3,11 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   cardContainer: {
     width: "90%",
-    height: 120,
     padding: 16,
+    display: "flex",
     alignSelf: "center",
-    flexDirection: "row",
     marginHorizontal: 10,
+    flexDirection: "row",
     borderWidth: 1,
     borderColor: "rgba(255, 255, 255, 0.2)",
     marginVertical: 10,
@@ -28,7 +28,8 @@ export default StyleSheet.create({
     marginRight: 20,
   },
   textContainer: {
-    width: 230,
+    display: "flex",
+    justifyContent: "center",
   },
   qualifications: {
     fontFamily: "sans-serif",
@@ -44,8 +45,8 @@ export default StyleSheet.create({
   timeContainer: {
     display: "flex",
     flexDirection: "row",
-    alignItems: "center",
     marginLeft: "auto",
+    marginTop: "auto",
   },
   monthText: {
     padding: 5,

@@ -24,12 +24,12 @@ const GameCard = ({ obj }) => {
           <Text style={styles.props}>Platform: </Text>
           {obj.platform}
         </Text>
-        <View style={styles.timeContainer}>
-          <Entypo name="back-in-time" size={20} color="orange" />
-          <Text style={[styles.qualifications, styles.monthText]}>
-            {monthsAgo}
-          </Text>
-        </View>
+      </View>
+      <View style={styles.timeContainer}>
+        <Entypo name="back-in-time" size={20} color="orange" />
+        <Text style={[styles.qualifications, styles.monthText]}>
+          {monthsAgo}
+        </Text>
       </View>
     </View>
   );
