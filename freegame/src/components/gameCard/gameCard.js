@@ -27,7 +27,7 @@ const GameCard = ({ obj }) => {
         <View style={styles.timeContainer}>
           <Entypo name="back-in-time" size={20} color="orange" />
           <Text style={[styles.qualifications, styles.monthText]}>
-            {monthsAgo === "New" ? "New" : `${monthsAgo} months`}
+            {monthsAgo}
           </Text>
         </View>
       </View>

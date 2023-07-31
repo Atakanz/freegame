@@ -6,7 +6,7 @@ export default StyleSheet.create({
     paddingVertical: 2,
     width: 120,
     borderRadius: 10,
-    marginHorizontal: 5,
+    marginVertical: 15,
   },
   filterText: {
     color: "white",

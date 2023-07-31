@@ -7,6 +7,7 @@ export default StyleSheet.create({
     textAlign: "center",
     marginTop: 70,
     marginBottom: 22,
+    minHeight: 65,
     color: "rgba(53, 141, 230, 1)",
   },
 });

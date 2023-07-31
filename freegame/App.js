@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { View, SafeAreaView, FlatList } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
 import { useFonts } from "expo-font";
 import Title from "./src/components/title/title";
 import { fetchData } from "./utils/http";
 import GameCard from "./src/components/gameCard/gameCard";
 import Filter from "./src/components/filter/filter";
+import Loading from "./src/components/animation/loading";
 import styles from "./App.style";
 
 const App = () => {
+  const [loading, setLoading] = useState(true);
   const [games, setGames] = useState([]);
   const [filterOptions, setFilterOptions] = useState({
     filterType: "single",
@@ -22,8 +23,12 @@ const App = () => {
 
   useEffect(() => {
     async function getGames() {
+      setLoading(true);
       const data = await fetchData(filterOptions);
       setGames(data);
+      setTimeout(() => {
+        setLoading(false); // Set loading to false after 2 seconds
+      }, 500); // 2000 milliseconds = 2 seconds
     }
     getGames();
   }, [filterOptions]);
@@ -32,28 +37,20 @@ const App = () => {
     return null;
   }
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <LinearGradient
-        colors={[
-          "rgba(39, 43, 48, 1)",
-          "rgba(53, 141, 230, 0.8)",
-          "rgba(39, 43, 48, 1)",
-        ]}
-        start={[0.3, 0.1]}
-        end={[0.3, 0.3]}
-        locations={[0.24, 0.17, 0.3]}
-        style={{ flex: 1 }}
-      >
-        <Title />
-        <Filter setFilter={setFilterOptions} />
-        <View style={styles.flatViewContainer}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "rgb(39,43,48)" }}>
+      <Title />
+      <Filter setFilter={setFilterOptions} />
+      <View style={styles.flatViewContainer}>
+        {loading ? (
+          <Loading />
+        ) : (
           <FlatList
             data={games}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => <GameCard obj={item} />}
           />
-        </View>
-      </LinearGradient>
+        )}
+      </View>
     </SafeAreaView>
   );
 };

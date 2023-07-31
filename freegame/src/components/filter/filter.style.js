@@ -2,41 +2,48 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   container: {
-    alignItems: "center",
-  },
-  directionButtons: {
     display: "flex",
     alignItems: "center",
+  },
+  filterTitlesOutline: {
+    display: "flex",
     justifyContent: "center",
   },
   directionsContainer: {
-    width: "95%",
+    width: "40%",
     display: "flex",
     alignItems: "center",
-    marginVertical: 10,
     borderWidth: 3,
     borderColor: "rgba(0,0,0,0.3)",
-    borderRadius: 4,
     backgroundColor: "rgba(0,0,0,0.2)",
+    borderRadius: 20,
+    paddingHorizontal: 10,
+    marginLeft: 10,
   },
   leftRightContainer: {
     display: "flex",
+    width: "100%",
     flexDirection: "row",
     alignItems: "center",
-    width: "100%",
-    marginVertical: 20,
-    paddingHorizontal: 20,
     justifyContent: "space-between",
   },
+  pressableContainer: {
+    padding: 0,
+  },
+
   filtersContainer: {
     display: "flex",
     flexDirection: "row",
   },
+  arrowFilterContainer: {
+    display: "flex",
+    flexDirection: "row",
+  },
   selectedOptionView: {
-    backgroundColor: "rgba(255,255,255,0.9)",
+    backgroundColor: "rgba(0,0,0,0.3)",
     paddingHorizontal: 8,
+    marginTop: 10,
     paddingVertical: 2,
-    marginVertical: 3,
     marginRight: 3,
     borderRadius: 5,
     display: "flex",
@@ -47,12 +54,12 @@ export default StyleSheet.create({
   },
   selectedFilterView: {
     display: "flex",
-    width: "93%",
+    width: "90%",
     flexDirection: "row",
     justifyContent: "space-between",
   },
   selectedOptionText: {
-    color: "black",
+    color: "rgba(53, 141, 230, 1)",
     fontWeight: "bold",
   },
   deleteFilterView: {

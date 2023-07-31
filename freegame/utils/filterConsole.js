@@ -49,25 +49,17 @@ export const selectFilterOption = (
 ) => {
   const newCategory = filterData[selected].name;
   const newSubtitle = filterData[selected].subTitles[subtitleIndex];
-
-  // Önceki filtrelenen seçeneklerin kontrolü
-  const isDuplicate = filterOptions.some(([category, subtitle]) => {
-    return category === newCategory;
-  });
-  if (filterOptions.length === 1 && isDuplicate) {
-    setFilterOptions([
-      [
-        (category = filterData[selected].name),
-        (subtitle = filterData[selected].subTitles[subtitleIndex]),
-      ],
-    ]);
-  } else if (subtitleIndex !== -1 && !isDuplicate) {
+  const isDuplicate = filterOptions.findIndex(
+    (item) => item[0] === newCategory
+  );
+  if (isDuplicate !== -1) {
+    const updatedOptions = [...filterOptions];
+    updatedOptions[isDuplicate] = [newCategory, newSubtitle];
+    setFilterOptions(updatedOptions);
+  } else if (subtitleIndex !== -1) {
     setFilterOptions((prevFiltered) => [
       ...prevFiltered,
-      [
-        (category = filterData[selected].name),
-        (subtitle = filterData[selected].subTitles[subtitleIndex]),
-      ],
+      [newCategory, newSubtitle],
     ]);
   }
 };
