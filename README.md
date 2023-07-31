@@ -12,9 +12,9 @@ npm start
 ## API, PACKAGES, PROPERTIES
 
 - [FreeToGame API](https://www.freetogame.com/api-doc)
-- Fetching the full or filtered list
+- Fetching all or filtered list
 - Single (1) and multiple (2-3) filter querying
-- You can switch filter headers with left and right arrows, different subtitles with up and down arrows
+- You can switch filter headers with left and right arrows, subtitles with up and down arrows
 - Select subtitles with plus icon
 
 <br>
