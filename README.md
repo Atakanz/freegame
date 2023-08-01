@@ -19,4 +19,4 @@ npm install
 npm start
 ```
 
-<img src="./freegame/assets/GIF.gif" width=300/>
+<img src="./freegame/assets/GIF.gif" width=200/>
