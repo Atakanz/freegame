@@ -45,8 +45,10 @@ export default StyleSheet.create({
   timeContainer: {
     display: "flex",
     flexDirection: "row",
+    alignItems: "center",
     marginLeft: "auto",
     marginTop: "auto",
+    marginBottom: -12,
   },
   monthText: {
     padding: 5,

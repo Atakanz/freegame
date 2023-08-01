@@ -27,10 +27,6 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
-  pressableContainer: {
-    padding: 0,
-  },
-
   filtersContainer: {
     display: "flex",
     flexDirection: "row",
