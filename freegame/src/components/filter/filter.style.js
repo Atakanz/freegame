@@ -13,17 +13,16 @@ export default StyleSheet.create({
     width: "40%",
     display: "flex",
     alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
     borderWidth: 3,
     borderColor: "rgba(0,0,0,0.3)",
     backgroundColor: "rgba(0,0,0,0.2)",
     borderRadius: 20,
-    paddingHorizontal: 10,
     marginLeft: 10,
   },
-  leftRightContainer: {
+  upDownContainer: {
     display: "flex",
-    width: "100%",
-    flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
   },
@@ -38,7 +37,6 @@ export default StyleSheet.create({
   selectedOptionView: {
     backgroundColor: "rgba(0,0,0,0.3)",
     paddingHorizontal: 8,
-    marginTop: 10,
     paddingVertical: 2,
     marginRight: 3,
     borderRadius: 5,
@@ -52,7 +50,6 @@ export default StyleSheet.create({
     display: "flex",
     width: "90%",
     flexDirection: "row",
-    justifyContent: "space-between",
   },
   selectedOptionText: {
     color: "rgba(53, 141, 230, 1)",
@@ -66,5 +63,8 @@ export default StyleSheet.create({
   },
   deleteContainer: {
     marginRight: 13,
+  },
+  filterTrashSection: {
+    marginTop: 30,
   },
 });

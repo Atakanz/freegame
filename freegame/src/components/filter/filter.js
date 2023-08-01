@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, FlatList, Pressable } from "react-native";
 import styles from "./filter.style";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
+import AntDesign from "@expo/vector-icons/AntDesign";
 import Ant from "@expo/vector-icons/AntDesign";
 import { filterData } from "../../data/filter";
 import FilterTitles from "../filterTitles/filterTitles";
@@ -92,37 +92,37 @@ const Filter = ({ setFilter }) => {
         </View>
         <View style={styles.directionsContainer}>
           <Pressable
-            onPress={handleLeftArrow}
+            onPress={handleDownSubtitle}
             style={({ pressed }) => [
-              styles.pressableContainerUp,
+              styles.pressableContainer,
               { opacity: pressed ? 1 : 0.7 },
             ]}
           >
-            <FontAwesome
-              name="caret-up"
+            <AntDesign
+              name="caretleft"
               color="orange"
               style={styles.directionButtons}
               backgroundColor="rgba(255, 255, 255, 0)"
-              size={50}
+              size={40}
             />
           </Pressable>
-
-          <View style={styles.leftRightContainer}>
+          <View style={styles.upDownContainer}>
             <Pressable
-              onPress={handleDownSubtitle}
+              onPress={handleLeftArrow}
               style={({ pressed }) => [
-                styles.pressableContainer,
+                styles.pressableContainerUp,
                 { opacity: pressed ? 1 : 0.7 },
               ]}
             >
-              <FontAwesome
-                name="caret-left"
+              <AntDesign
+                name="caretup"
                 color="orange"
                 style={styles.directionButtons}
                 backgroundColor="rgba(255, 255, 255, 0)"
-                size={50}
+                size={40}
               />
             </Pressable>
+
             <Pressable
               onPress={handleSelectFilterOption}
               style={({ pressed }) => [
@@ -135,92 +135,94 @@ const Filter = ({ setFilter }) => {
                 color="orange"
                 style={styles.directionButtons}
                 backgroundColor="rgba(255, 255, 255, 0)"
-                size={30}
+                size={50}
               />
             </Pressable>
             <Pressable
-              onPress={handleUpSubtitle}
+              onPress={handleRightArrow}
               style={({ pressed }) => [
                 styles.pressableContainer,
                 { opacity: pressed ? 1 : 0.7 },
               ]}
             >
-              <FontAwesome
-                name="caret-right"
+              <AntDesign
+                name="caretdown"
                 color="orange"
                 style={styles.directionButtons}
                 backgroundColor="rgba(255, 255, 255, 0)"
-                size={50}
+                size={40}
               />
             </Pressable>
           </View>
           <Pressable
-            onPress={handleRightArrow}
+            onPress={handleUpSubtitle}
             style={({ pressed }) => [
               styles.pressableContainer,
               { opacity: pressed ? 1 : 0.7 },
             ]}
           >
-            <FontAwesome
-              name="caret-down"
+            <AntDesign
+              name="caretright"
               color="orange"
               style={styles.directionButtons}
               backgroundColor="rgba(255, 255, 255, 0)"
-              size={50}
+              size={40}
             />
           </Pressable>
         </View>
       </View>
-      <View style={styles.selectedFilterView}>
-        {filterOptions.length !== 0 ? (
-          <View>
-            <FlatList
-              horizontal
-              data={filterOptions}
-              keyExtractor={(item, index) => item}
-              renderItem={({ item, index }) => (
-                <View style={styles.selectedOptionView}>
-                  <Text style={styles.selectedOptionText}>{item[1]}</Text>
-                </View>
-              )}
-            />
+      <View style={styles.filterTrashSection}>
+        <View style={styles.selectedFilterView}>
+          {filterOptions.length !== 0 ? (
+            <View>
+              <FlatList
+                horizontal
+                data={filterOptions}
+                keyExtractor={(item, index) => item}
+                renderItem={({ item, index }) => (
+                  <View style={styles.selectedOptionView}>
+                    <Text style={styles.selectedOptionText}>{item[1]}</Text>
+                  </View>
+                )}
+              />
+            </View>
+          ) : (
+            <View style={styles.selectedOptionView}>
+              <Text style={styles.selectedOptionText}>Select tags</Text>
+            </View>
+          )}
+          <View style={styles.deleteFilterView}>
+            <Pressable
+              onPress={handleGetFilteredGames}
+              style={({ pressed }) => [
+                styles.deleteContainer,
+                { opacity: pressed ? 1 : 0.7 },
+              ]}
+            >
+              <AntDesign
+                name="filter"
+                color="orange"
+                style={styles.directionButtons}
+                backgroundColor="rgba(255, 255, 255, 0)"
+                size={30}
+              />
+            </Pressable>
+            <Pressable
+              onPress={handleDeleteFilters}
+              style={({ pressed }) => [
+                styles.pressableContainer,
+                { opacity: pressed ? 1 : 0.7 },
+              ]}
+            >
+              <AntDesign
+                name="delete"
+                color="orange"
+                style={styles.directionButtons}
+                backgroundColor="rgba(255, 255, 255, 0)"
+                size={30}
+              />
+            </Pressable>
           </View>
-        ) : (
-          <View style={styles.selectedOptionView}>
-            <Text style={styles.selectedOptionText}>Select tags</Text>
-          </View>
-        )}
-        <View style={styles.deleteFilterView}>
-          <Pressable
-            onPress={handleGetFilteredGames}
-            style={({ pressed }) => [
-              styles.deleteContainer,
-              { opacity: pressed ? 1 : 0.7 },
-            ]}
-          >
-            <FontAwesome
-              name="filter"
-              color="orange"
-              style={styles.directionButtons}
-              backgroundColor="rgba(255, 255, 255, 0)"
-              size={30}
-            />
-          </Pressable>
-          <Pressable
-            onPress={handleDeleteFilters}
-            style={({ pressed }) => [
-              styles.pressableContainer,
-              { opacity: pressed ? 1 : 0.7 },
-            ]}
-          >
-            <FontAwesome
-              name="trash"
-              color="orange"
-              style={styles.directionButtons}
-              backgroundColor="rgba(255, 255, 255, 0)"
-              size={30}
-            />
-          </Pressable>
         </View>
       </View>
     </View>
